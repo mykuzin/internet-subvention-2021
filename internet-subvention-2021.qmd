@@ -2,25 +2,10 @@
 title: "Оцінка ефективності інтернет-субвенції 2021"
 format: html
 editor: visual
+project:
+  type: default
+  output-dir: docs
 ---
-
-## Про інтернет-субвенцію
-
-У червні 2021 року Уряд затвердив виділення 483.8 млн грн на [субвенцію](https://bb.gov.ua/#rec298897521) для підключення закладів соціальної інфраструктури (шкіл, бібліотек, медичних закладів, ЦНАПів тощо) до широкосмугового Інтернет. Програма передбачала, що 670 громад та 3652 населених пунктів (здебільшого, сіл та селищ) зможуть отримати послуги з підключення до оптичного Інтернет.
-
-Заявки на участь у програмі [подали](https://lookerstudio.google.com/u/0/reporting/960c1212-6681-49c2-b31b-b3dc92b32541/page/lVANC) 4103 населені пункти, з яких підтвердження на участь («повне погодження») отримали 2902. Фактично, закупівля послуги відбулася для 2805 населених пунктів. Непрямим впливом програми передбачалося також, що ще кілька сотень населених пунктів, розташованих на шляху до відібраних населених пунктів, також будуть підключені залученими постачальниками інтернет-послуг.
-
-## Підхід до оцінки 
-
-Для оцінки ефективності цієї програми була проаналізована регуляторна звітність постачальників електронних послуг за формою 1-Т «Сфера телекомунікацій»: чи з’явився оптичний інтернет, тобто технології *xPON* або *FTTx*, у населених пунктах, заявлених як учасників програми. До останніх віднесено 2805 населених пунктів, «підключених відповідно до протоколу», 334 «підключених транзитом» та 98 «підключених до закупівлі» — **разом 3237 населених пунктів**.
-
-Для оцінки впливу програми також були використані такі набори даних:
-
--   перелік соціальних закладів (набір МЦТУ, актуальний на січень 2022 року);
--   кількість абонентів у підключених населених пунктах (форма 1-Т за період 2021-2024Q2);
--   перелік окупованих населених пунктів (дані IWS, станом на 03 листопада 2024).
-
-## Running Code
 
 ```{r include = FALSE}
 library(patchwork)
@@ -33,11 +18,93 @@ library(gtExtras)
 library(webshot2)
 ```
 
-You can add options to executable code like this
+## Про інтернет-субвенцію
 
-```{r warning=FALSE}
+У червні 2021 року Уряд затвердив виділення 483.8 млн грн на [субвенцію](https://bb.gov.ua/#rec298897521) для підключення закладів соціальної інфраструктури (шкіл, бібліотек, медичних закладів, ЦНАПів тощо) до широкосмугового Інтернет. Програма передбачала, що 670 громад та 3652 населених пунктів (здебільшого, сіл та селищ) зможуть отримати послуги з підключення до оптичного Інтернет.
+
+Заявки на участь у програмі [подали](https://lookerstudio.google.com/u/0/reporting/960c1212-6681-49c2-b31b-b3dc92b32541/page/lVANC) 4103 населені пункти, з яких підтвердження на участь («повне погодження») отримали 2902. Фактично, закупівля послуги відбулася для 2805 населених пунктів. Непрямим впливом програми передбачалося також, що ще кілька сотень населених пунктів, розташованих на шляху до відібраних населених пунктів, також будуть підключені залученими постачальниками інтернет-послуг (переможцями тендерів).
+
+## Підхід до оцінки 
+
+Для оцінки ефективності цієї програми була проаналізована регуляторна звітність постачальників електронних послуг за формою 1-Т «Сфера телекомунікацій»: чи з’явився оптичний інтернет, тобто технології *xPON* або *FTTx*, у населених пунктах, заявлених як учасників програми. До останніх віднесено 2805 населених пунктів, «підключених відповідно до протоколу», 334 «підключених транзитом» та 98 «підключених до закупівлі» — **разом 3237 населених пунктів**.
+
+Для оцінки впливу програми також були використані такі набори даних:
+
+-   перелік соціальних закладів (набір МЦТУ, актуальний на січень 2022 року);
+-   кількість абонентів у підключених населених пунктах у розрізі технологій (форма 1-Т за період 2021-2024Q2);
+-   перелік окупованих населених пунктів (дані IWS, станом на 03 листопада 2024).
+
+## Аналіз
+
+#### i. контекст
+
+Під час дії воєнного стану постачальники електронних послуг не зобов’язані подавати звітність регулятору. Відповідно, для оцінки підключених населених пунктів на основі регуляторної звітності були використані звіти за період 2021-2024Q2: якщо принаймні в одному періоді звітування населений пункт мав абонентів підключених до широкосмугового Інтернет, він вважається підключеним. При такому підході, у розрізі технологій, підключення підконтрольних населених пунктів станом на 2024Q2 виглядає так:
+
+```{r warning=FALSE, include = FALSE}
 setwd(Sys.getenv('LOCAL_WD_GEN_USE_DATA'))
 
+soc_objects22 <- read.csv("social objects 2021-2022.csv")
+
+t1_raw <- read_parquet("1t_agg.parquet")
+
+t1 <- t1_raw |> select(edrpou, firm_name = c_name, year = YEAR, geo_katottg4 = geo_koatuu,
+                       starts_with("cnt"), 
+                       firm_type = c_type) |>
+  select(-contains("speed"), -cnt_abonents__fiz) 
+
+warzones_localities <- read_xlsx("warzones_localities_categorized.xlsx") |>
+  select(geo_oblast = oblast, geo_hromada = hromada, geo_locality = locality, 
+         type, geo_katottg4 = level_4, n_soc_zakl_2021, long, lat, pop_jan_22)
+
+warzones_localities <- 
+  st_as_sf(warzones_localities, coords = c("long", "lat"), remove = FALSE, crs = 4326)
+
+warzones_localities <- warzones_localities[order(warzones_localities$geo_oblast), ]
+
+ua_oblasts <- st_read("ADMIN_1.geojson") |> 
+  select(geo_oblast = ADMIN_1, geo_katottg1 = COD_1, geometry) |>
+  mutate(geo_oblast = str_extract(geo_oblast, regex("^\\S+")))
+
+ua_oblasts <- ua_oblasts[-c(26,27), ]
+ua_oblasts[25, 1] <- "місто Київ"
+
+ua_oblasts <- ua_oblasts[order(ua_oblasts$geo_oblast), ]
+
+ua_oblasts <- st_transform(ua_oblasts, crs = 4326)
+
+oblasts_vec <- unique(sort(warzones_localities$geo_oblast))
+
+unique(warzones_localities$geo_oblast) == oblasts_vec
+
+
+t1_24_all <- # тут посумовані абоненти за всі роки (але цікавить лише колонка internet)
+  t1 |> summarise(
+    across(starts_with("cnt"), sum),
+    .by = c(geo_katottg4)
+  ) |> right_join(warzones_localities |> select(geo_katottg4) |> st_drop_geometry(),
+                  join_by(geo_katottg4)) |> 
+  mutate(
+    across(contains("cnt_"), ~ if_else(is.na(.), 0, .)),
+    across(contains("cnt_"), as.numeric),
+    xpon_present = if_else(cnt_abn_xpon > 0, 1, 0),
+    no_xpon_is_fttx = if_else(xpon_present == 0 & cnt_abn_fftx > 0, 1, 0),
+    no_internet = if_else(cnt_abonents__total == 0, 1, 0),
+    internet = case_when(
+      xpon_present == 1 ~ "є xPON",
+      no_xpon_is_fttx == 1 ~ "є FTTX, без xPON",
+      no_internet == 1 ~ "немає фікс.інтернет",
+      .default = "є інші технології"
+    )
+  ) |> select(-c(xpon_present, no_xpon_is_fttx, no_internet)) |>
+  select(geo_katottg4, internet)
+
+warzones_localities_t1_24_all <- 
+  warzones_localities |> left_join(t1_24_all, join_by(geo_katottg4))
+
+t1_24q2_accum <- warzones_localities_t1_24_all |> rename(fixed_internet_type = internet) |> st_drop_geometry()
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+t1_24q2_accum |> count(fixed_internet_type) |> arrange(desc(n)) |> 
+  gt() |> grand_summary_rows(2, fns = ~ sum(.))
+```
