@@ -24,7 +24,7 @@ library(webshot2)
 
 Заявки на участь у програмі [подали](https://lookerstudio.google.com/u/0/reporting/960c1212-6681-49c2-b31b-b3dc92b32541/page/lVANC) 4103 населені пункти, з яких підтвердження на участь («повне погодження») отримали 2902. Фактично, закупівля послуги відбулася для 2805 населених пунктів. Непрямим впливом програми передбачалося також, що ще кілька сотень населених пунктів, розташованих на шляху до відібраних населених пунктів, також будуть підключені залученими постачальниками інтернет-послуг (переможцями тендерів).
 
-## Підхід до оцінки 
+## Підхід до оцінки
 
 Для оцінки ефективності цієї програми була проаналізована регуляторна звітність постачальників електронних послуг за формою 1-Т «Сфера телекомунікацій»: чи з’явився оптичний інтернет, тобто технології *xPON* або *FTTx*, у населених пунктах, заявлених як учасників програми. До останніх віднесено 2805 населених пунктів, «підключених відповідно до протоколу», 334 «підключених транзитом» та 98 «підключених до закупівлі» — **разом 3237 населених пунктів**.
 
@@ -36,12 +36,17 @@ library(webshot2)
 
 ## Аналіз
 
-#### i. контекст
+#### I. контекст
 
 Під час дії воєнного стану постачальники електронних послуг не зобов’язані подавати звітність регулятору. Відповідно, для оцінки підключених населених пунктів на основі регуляторної звітності були використані звіти за період 2021-2024Q2: якщо принаймні в одному періоді звітування населений пункт мав абонентів підключених до широкосмугового Інтернет, він вважається підключеним. При такому підході, у розрізі технологій, підключення підконтрольних населених пунктів станом на 2024Q2 виглядає так:
 
 ```{r warning=FALSE, include = FALSE}
 setwd(Sys.getenv('LOCAL_WD_GEN_USE_DATA'))
+
+kodyf <- read_xlsx("kodyficator_clean_Sept2024.xlsx") |>
+  select(geo_katottg4 = level_4, geo_locality = name, geo_oblast = oblast, 
+         geo_rayon =rayon, geo_hromada = hromada, geo_category = category,
+         geo_katottg3 = level_3, geo_katottg2 = level_2)
 
 soc_objects22 <- read.csv("social objects 2021-2022.csv")
 
@@ -55,6 +60,7 @@ t1 <- t1_raw |> select(edrpou, firm_name = c_name, year = YEAR, geo_katottg4 = g
 warzones_localities <- read_xlsx("warzones_localities_categorized.xlsx") |>
   select(geo_oblast = oblast, geo_hromada = hromada, geo_locality = locality, 
          type, geo_katottg4 = level_4, n_soc_zakl_2021, long, lat, pop_jan_22)
+
 
 warzones_localities <- 
   st_as_sf(warzones_localities, coords = c("long", "lat"), remove = FALSE, crs = 4326)
@@ -77,8 +83,11 @@ oblasts_vec <- unique(sort(warzones_localities$geo_oblast))
 unique(warzones_localities$geo_oblast) == oblasts_vec
 
 
-t1_24_all <- # тут посумовані абоненти за всі роки (але цікавить лише колонка internet)
-  t1 |> summarise(
+t1_24_all <- # тут посумовані абоненти за всі роки - але цікавить лише колонка internet
+  t1 |> 
+  mutate(across(contains('cnt'), ~ if_else(is.na(.), 0, .))) |>
+  filter(!is.na(geo_katottg4)) |>
+  summarise(
     across(starts_with("cnt"), sum),
     .by = c(geo_katottg4)
   ) |> right_join(warzones_localities |> select(geo_katottg4) |> st_drop_geometry(),
@@ -108,3 +117,325 @@ t1_24q2_accum <- warzones_localities_t1_24_all |> rename(fixed_internet_type = i
 t1_24q2_accum |> count(fixed_internet_type) |> arrange(desc(n)) |> 
   gt() |> grand_summary_rows(2, fns = ~ sum(.))
 ```
+
+```{r include = FALSE}
+setwd(Sys.getenv('LOCAL_WD_SUBV_2021'))
+
+providers3_protocol <- read_xlsx("subven_2023-02-16.xlsx", 
+                        sheet = "підключено відповідно до проток")
+
+providers3_zakup <- read_xlsx("subven_2023-02-16.xlsx", 
+                                 sheet = "підключено до закупівлі")
+
+providers3_transit <- read_xlsx("subven_2023-02-16.xlsx", 
+                                 sheet = "підключено транзитом")
+
+providers3 <- rbind(providers3_protocol, providers3_transit, providers3_zakup)
+
+providers3_soczakl <- read_xlsx("subven_2023-02-16.xlsx", 
+                                sheet = "підключені соцзаклади") |>
+  count(`код нас. пункту`) |> rename(n_prov3 = n)  
+
+providers3 <- 
+providers3 |> left_join(
+  soc_objects22 |> count(koatuu_new),
+  join_by(`Код населеного пункту` == koatuu_new)
+  ) |> left_join(providers3_soczakl,
+                 join_by(`Код населеного пункту` == `код нас. пункту`)) |> 
+  mutate(socobjects_count_per_settlement =
+           if_else(is.na(n_prov3), n, n_prov3),
+         socobjects_count_per_settlement = 
+           if_else(is.na(socobjects_count_per_settlement), 0, 
+                   socobjects_count_per_settlement)) |>
+select(-c(n, n_prov3))
+
+connected_localities3 <- providers3 |> 
+  filter(!is.na(`Код населеного пункту`)) |>
+  left_join(kodyf, join_by(`Код населеного пункту` == geo_katottg4))
+
+connected_localities_clean3 <- 
+  connected_localities3 |> 
+  left_join(t1, join_by(`Код населеного пункту` == geo_katottg4)) |> 
+  rename(geo_katottg4 = `Код населеного пункту`) |>
+  mutate(
+    across(starts_with("cnt"), ~ replace_na(., 0)),
+    year = if_else(is.na(year), "2024Q2", year)
+  ) |>
+  summarize(
+    across(starts_with("cnt_"), sum),
+    .by = c(geo_katottg4, geo_locality, geo_oblast, geo_rayon, year)
+  )
+
+subv_results3 <- 
+  connected_localities_clean3 |>
+  rename(subs_total = cnt_abonents__total, subs_fttx_xpon = cnt_abn_xponfftx) |>
+  pivot_wider(names_from = year, values_from = starts_with("subs_")) |>
+  mutate(
+    across(starts_with("subs_"), ~ replace_na(., 0))
+  ) |>
+  select(starts_with("geo"), starts_with("subs")) |>
+  summarize(
+    across(starts_with("subs"), sum),
+    .by = c(geo_katottg4, geo_locality, geo_oblast, geo_rayon)
+  )
+
+subv_results3 |> count(geo_oblast) |> arrange(desc(n))
+```
+
+#### II. Оптичний інтернет у населених пунктах-учасниках програми
+
+```{r include = FALSE}
+subv_results3 |>
+filter(subs_fttx_xpon_2024Q2 == 0) |> nrow()
+
+subv_results3 |> summarize(across(contains("xpon"), ~ sum(.)))
+
+subs_detection <- function(year_current_col, year_prev_col) {
+  year_current_col = if_else(year_current_col == 0 & year_prev_col > 0,
+                              year_prev_col,
+                              year_current_col)
+}
+
+subv_results3_adj <- 
+subv_results3 |>
+  mutate(
+    subs_fttx_xpon_2022 = subs_detection(subs_fttx_xpon_2022, subs_fttx_xpon_2021),
+    subs_fttx_xpon_2023 = subs_detection(subs_fttx_xpon_2023, subs_fttx_xpon_2022),
+    subs_fttx_xpon_2024Q2 = subs_detection(subs_fttx_xpon_2024Q2, subs_fttx_xpon_2023)
+  )
+
+subv_results3_adj |> summarize(across(contains("xpon"), ~ sum(.))) |> gt()
+```
+
+```{r include = FALSE}
+subv_results_var <- 
+  subv_results3_adj
+
+socserv_fac_var <- 
+  subv_results_var |> 
+  left_join(providers3, join_by(geo_katottg4 == `Код населеного пункту`)) |>
+  summarize(n_soc = sum(socobjects_count_per_settlement))
+
+localities_var <- subv_results_var |> 
+  left_join(providers3, join_by(geo_katottg4 == `Код населеного пункту`)) |>
+  distinct(geo_katottg4) |> nrow()
+
+subv_results_aux <- 
+  subv_results_var |> 
+  mutate(
+    subs_total_new_21 = if_else(subs_total_2021 > 0, 1, 0),
+    subs_total_new_22 = if_else(subs_total_2022 > 0, 1, 0),
+    subs_total_new_23 = if_else(subs_total_2023 > 0, 1, 0),
+    subs_total_new_24Q2 = if_else(subs_total_2024Q2 > 0, 1, 0),
+    subs_xpon_fttx_np_2021 = if_else(subs_fttx_xpon_2021 > 0, 1, 0),
+    subs_xpon_fttx_np_2022 = if_else(subs_fttx_xpon_2022 > 0, 1, 0),
+    subs_xpon_fttx_np_2023 = if_else(subs_fttx_xpon_2023 > 0, 1, 0),
+    subs_xpon_fttx_np_2024Q2 = if_else(subs_fttx_xpon_2024Q2 > 0, 1, 0)
+  ) 
+
+subv_results_aux |> 
+  summarize(across(contains("xpon_fttx_np"), ~ sum(.)))
+
+```
+
+В розрізі населених пунктів-учасників програми, підключених до оптичного інтернету і які знаходяться на підконтрольній території, маємо таку динаміку за роками (тут також населений пункт вважається підключеним, якщо принаймні в один період звітування 2021-2024Q2 постачальники зазначали присутність абонентів, підключених за технологіями *FTTx*/*xPON*):
+
+```{r echo = FALSE}
+subv_results_aux |> 
+  summarize(across(contains("xpon_fttx_np"), ~ sum(.))) |> 
+  gt() |> 
+  cols_label(
+    subs_xpon_fttx_np_2021 = "оптич_інтернет 2021",
+    subs_xpon_fttx_np_2022 = "оптич_інтернет 2022",
+    subs_xpon_fttx_np_2023 = "оптич_інтернет 2023",
+    subs_xpon_fttx_np_2024Q2 = "оптич_інтернет 2024Q2")
+```
+
+Ще 337 населених пункти перебувають на окупованих територіях. 
+
+```{r include = FALSE}
+setwd(paste0(Sys.getenv('LOCAL_WD_GEN_USE_DATA'), "/Ukraine admin boundaries"))
+list.files()
+
+ua_borders <- st_read("ukr_admbnda_adm0_sspe_20240416.shp", promote_to_multi = FALSE)
+
+st_crs(ua_borders)
+
+ua_borders <- st_transform(ua_borders, crs = 4326)
+
+class(ua_borders$geometry)
+
+ua_borders <- ua_borders |> st_cast("POLYGON")
+
+df <- sf::read_sf("ukr_admbnda_adm4_sspe_20240416.shp")
+
+st_crs(df)
+
+which(!st_is_valid(df))
+
+df <- st_make_valid(df)
+
+which(!st_is_valid(df))
+
+centroids <- st_centroid(df)
+
+centroids <- 
+  centroids |> select(ADM4_UA, ADM4_PCODE, geometry)
+
+class(centroids)
+
+subv_np_occupied2 <- 
+  anti_join(kodyf,
+            warzones_localities_t1_24_all,
+            join_by(geo_katottg4)) |>
+  left_join(connected_localities_clean3, join_by(geo_katottg4)) |> 
+  filter(!is.na(cnt_abonents__total)) |> distinct(geo_katottg4) 
+
+
+centroid_adm4 <- 
+  left_join(
+    subv_np_occupied2 |> mutate(admin_code = str_sub(geo_katottg4, 1, 12)),
+    centroids,
+     join_by(admin_code == ADM4_PCODE)
+  )
+
+coords4 <- st_coordinates(centroid_adm4$geometry)
+
+centroid_adm4 <- 
+  centroid_adm4 |>
+  mutate(long = coords4[, "X"],
+         lat = coords4[, "Y"]) |>
+  select(-c(geometry, ADM4_UA))
+
+names(centroid_adm4)
+
+# centroid_adm4 <- 
+#  centroid_adm4 |> select(oblast, nas_punkt, level_4, start_date, long, lat)
+
+str(centroid_adm4)
+
+occupied_sf <- 
+  st_as_sf(centroid_adm4, coords = c("long", "lat"), remove = FALSE, crs = 4326)
+
+str(occupied_sf)
+
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = ua_borders$geometry, fill = NA) +
+  geom_sf(data = occupied_sf$geometry, color = "blue", size = .2) +
+   labs(
+     title = "Населені пункти-учасники програми, наразі на окупованих територіях",
+     caption = "Станом на 03 листопада 2024") + 
+  theme_minimal()
+```
+
+Таким чином, з 3237 населених пунктів, ідентифікованих як учасників програми, станом на 2024Q2 регуляторна звітність показує наявність оптичного інтернету у 2233 населених пунктах. Ще 337 перебувають на тимчасово окупавних територіях.
+
+Щодо решти 667 населених пунктів, які брали участь в програмі, але, відповідно до звітності, не мають підключення до фіксованого Інтернет, проведений додатковий аналіз: підключення цих населених пунктів додатково оцінено завдяки співставленню переможців тендерів на постачання послуг з підключення до оптичного Інтернет зі списком постачальників електронних послуг, що не подають регуляторну звітність: базовим припущенням є те, що у населеному пункті, де є постачальник-переможець тендеру, але при цьому цей постачальник не подає звітність через воєнний стан — у такому населеному пунктів фіксований Інтернет скоріше підключений.
+
+```{r}
+
+```
+
+```{r include = FALSE, eval = FALSE}
+subs <- 
+  subv_results_aux |> 
+  select(geo_katottg4, contains("fttx")) |> 
+  summarise(
+    across(contains("fttx"), sum)
+  )
+
+subs_clean <- data.frame(
+  period = c("2022", "2023", "2024Q2"),
+  subscribers_fttxpon = c(subs$subs_fttx_xpon_2022, 
+                          subs$subs_fttx_xpon_2023, 
+                          subs$subs_fttx_xpon_2024Q2)
+)
+
+
+subv_results_cur <- 
+subv_results_aux |>
+  select(geo_katottg4, subs_total_new_21, subs_total_new_22,
+         subs_total_new_23, subs_total_new_24Q2,
+         subs_xpon_new_2021, subs_xpon_new_2022, 
+         subs_xpon_new_2023, subs_xpon_new_2024Q2) |>
+  select(geo_katottg4, contains("xpon")) |> 
+  mutate(
+    subs_xpon_new_2022 = if_else(subs_xpon_new_2021 == 1, 1, subs_xpon_new_2022),
+    subs_xpon_new_2023 = if_else(subs_xpon_new_2022 == 1, 1, subs_xpon_new_2023),
+    subs_xpon_new_2024Q2 = if_else(subs_xpon_new_2023 == 1, 1, subs_xpon_new_2024Q2)
+  ) |>
+  summarise(
+    across(contains("subs"), sum)
+  )
+
+subv_results_clean <- data.frame(
+  period = c("2022", "2023", "2024Q2"),
+  subscribers = c(subv_results_cur$subs_xpon_new_2022, 
+                  subv_results_cur$subs_xpon_new_2023, 
+                  subv_results_cur$subs_xpon_new_2024Q2)
+)
+
+subv_results_clean <- 
+  left_join(subv_results_clean, subs_clean, join_by(period))
+
+subv_np_occupied <- 
+  anti_join(kodyf,
+            warzones_localities_t1_24_all,
+            join_by(geo_katottg4)) |>
+  left_join(connected_localities_clean3, join_by(geo_katottg4)) |> 
+  filter(!is.na(cnt_abonents__total)) |> distinct(geo_katottg4) |> nrow()
+
+subv_np_occupied2 <- 
+  anti_join(kodyf,
+            warzones_localities_t1_24_all,
+            join_by(geo_katottg4)) |>
+  left_join(connected_localities_clean3, join_by(geo_katottg4)) |> 
+  filter(!is.na(cnt_abonents__total)) |> distinct(geo_katottg4)
+
+subv_np_occupied2 |>
+  left_join(warzones_localities_t1_24_all, join_by(geo_katottg4))
+
+subv_np_occupied2$geo_katottg4[1] |> str_count()
+warzones_localities_t1_24_all$geo_katottg4[1]
+
+str(warzones_localities)
+
+subv_np_occupied2 |> filter(geo_katottg4 == "UA05020010010058853")
+
+writexl::write_xlsx(subv_np_occupied2, "occupied_to_check.xlsx")
+
+subv_table_ua <- 
+  subv_results_clean |>
+  gt() |>
+  tab_header(
+    title = html("Субвенція 2021: нові села/селища з xPON/FTTx"),
+    subtitle = html(paste("На скільки населених пунктів, уся Україна: <b>", localities_var, "</b><br>",
+                          "населених пунктів в окупації: <b>", subv_np_occupied, "</b><br>",
+                          "Соціальних закладів у НП з субвенцією: <b>", 
+                          socserv_fac_var, "</b>", 
+                          "<br>Фактично нових НП з xPon/FTTx за роками (лише підконтрольні):"))
+  ) |>
+  fmt_number(
+    columns = subscribers,
+    decimals = 0
+  ) |>
+  cols_label(
+    period = "Рік (на кінець періоду)",
+    subscribers = "Села/Селища",
+    subscribers_fttxpon = "Абоненти"
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_source_note(md("*Немає даних про підключення 745 населених пунктів/ їхніх абонентів*"))
+
+subv_table_ua
+```
+
+скільки тг мають хоча б один
+
+станом на 2024q2 у 9574 підконтрольних нп (з 25,847 всього підконтрольних) немає фіксованого інтернету, тобто ні xpon, ні fttx (не було жодної згадки про присутність цих технологій в 1т за період 2021-2024q2). - У 1052 громадах є принаймні 1 нп без фіксованого інтернету. - за даними по соц.закладам на початок 2022 року, з цих 9574 нп без фіксованого інтернету, у 6610 нп немає жодного соц.закладу. І навпаки, у 2964 нп без фіксованого інтернету є принаймні 1 соц.заклад - всього у 2964 нп без фікс.інтернету і з соц.закладами — 7527 соц.закладів

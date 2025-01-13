@@ -114,29 +114,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="аналіз" class="level2">
 <h2 class="anchored" data-anchor-id="аналіз">Аналіз</h2>
 <section id="i.-контекст" class="level4">
-<h4 class="anchored" data-anchor-id="i.-контекст">i. контекст</h4>
+<h4 class="anchored" data-anchor-id="i.-контекст">I. контекст</h4>
 <p>Під час дії воєнного стану постачальники електронних послуг не зобов’язані подавати звітність регулятору. Відповідно, для оцінки підключених населених пунктів на основі регуляторної звітності були використані звіти за період 2021-2024Q2: якщо принаймні в одному періоді звітування населений пункт мав абонентів підключених до широкосмугового Інтернет, він вважається підключеним. При такому підході, у розрізі технологій, підключення підконтрольних населених пунктів станом на 2024Q2 виглядає так:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>t1_24q2_accum <span class="sc">|&gt;</span> <span class="fu">count</span>(fixed_internet_type) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> <span class="fu">grand_summary_rows</span>(<span class="dv">2</span>, <span class="at">fns =</span> <span class="sc">~</span> <span class="fu">sum</span>(.))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ompomktosp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ompomktosp table {
+<div id="cjuktkcagy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cjuktkcagy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ompomktosp thead, #ompomktosp tbody, #ompomktosp tfoot, #ompomktosp tr, #ompomktosp td, #ompomktosp th {
+#cjuktkcagy thead, #cjuktkcagy tbody, #cjuktkcagy tfoot, #cjuktkcagy tr, #cjuktkcagy td, #cjuktkcagy th {
   border-style: none;
 }
 
-#ompomktosp p {
+#cjuktkcagy p {
   margin: 0;
   padding: 0;
 }
 
-#ompomktosp .gt_table {
+#cjuktkcagy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -162,12 +162,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#ompomktosp .gt_caption {
+#cjuktkcagy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ompomktosp .gt_title {
+#cjuktkcagy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#ompomktosp .gt_subtitle {
+#cjuktkcagy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#ompomktosp .gt_heading {
+#cjuktkcagy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -203,13 +203,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ompomktosp .gt_bottom_border {
+#cjuktkcagy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ompomktosp .gt_col_headings {
+#cjuktkcagy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -224,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ompomktosp .gt_col_heading {
+#cjuktkcagy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ompomktosp .gt_column_spanner_outer {
+#cjuktkcagy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -256,15 +256,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#ompomktosp .gt_column_spanner_outer:first-child {
+#cjuktkcagy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ompomktosp .gt_column_spanner_outer:last-child {
+#cjuktkcagy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ompomktosp .gt_column_spanner {
+#cjuktkcagy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -276,11 +276,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#ompomktosp .gt_spanner_row {
+#cjuktkcagy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ompomktosp .gt_group_heading {
+#cjuktkcagy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#ompomktosp .gt_empty_group_heading {
+#cjuktkcagy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -321,15 +321,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#ompomktosp .gt_from_md > :first-child {
+#cjuktkcagy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ompomktosp .gt_from_md > :last-child {
+#cjuktkcagy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ompomktosp .gt_row {
+#cjuktkcagy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#ompomktosp .gt_stub {
+#cjuktkcagy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ompomktosp .gt_stub_row_group {
+#cjuktkcagy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,15 +375,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#ompomktosp .gt_row_group_first td {
+#cjuktkcagy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ompomktosp .gt_row_group_first th {
+#cjuktkcagy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ompomktosp .gt_summary_row {
+#cjuktkcagy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -393,16 +393,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ompomktosp .gt_first_summary_row {
+#cjuktkcagy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ompomktosp .gt_first_summary_row.thick {
+#cjuktkcagy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ompomktosp .gt_last_summary_row {
+#cjuktkcagy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -412,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ompomktosp .gt_grand_summary_row {
+#cjuktkcagy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -422,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ompomktosp .gt_first_grand_summary_row {
+#cjuktkcagy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#ompomktosp .gt_last_grand_summary_row_top {
+#cjuktkcagy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -442,11 +442,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ompomktosp .gt_striped {
+#cjuktkcagy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ompomktosp .gt_table_body {
+#cjuktkcagy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -455,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#ompomktosp .gt_footnotes {
+#cjuktkcagy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -469,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ompomktosp .gt_footnote {
+#cjuktkcagy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -478,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ompomktosp .gt_sourcenotes {
+#cjuktkcagy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#ompomktosp .gt_sourcenote {
+#cjuktkcagy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -500,72 +500,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#ompomktosp .gt_left {
+#cjuktkcagy .gt_left {
   text-align: left;
 }
 
-#ompomktosp .gt_center {
+#cjuktkcagy .gt_center {
   text-align: center;
 }
 
-#ompomktosp .gt_right {
+#cjuktkcagy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ompomktosp .gt_font_normal {
+#cjuktkcagy .gt_font_normal {
   font-weight: normal;
 }
 
-#ompomktosp .gt_font_bold {
+#cjuktkcagy .gt_font_bold {
   font-weight: bold;
 }
 
-#ompomktosp .gt_font_italic {
+#cjuktkcagy .gt_font_italic {
   font-style: italic;
 }
 
-#ompomktosp .gt_super {
+#cjuktkcagy .gt_super {
   font-size: 65%;
 }
 
-#ompomktosp .gt_footnote_marks {
+#cjuktkcagy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ompomktosp .gt_asterisk {
+#cjuktkcagy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ompomktosp .gt_indent_1 {
+#cjuktkcagy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ompomktosp .gt_indent_2 {
+#cjuktkcagy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ompomktosp .gt_indent_3 {
+#cjuktkcagy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ompomktosp .gt_indent_4 {
+#cjuktkcagy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ompomktosp .gt_indent_5 {
+#cjuktkcagy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ompomktosp .katex-display {
+#cjuktkcagy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ompomktosp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cjuktkcagy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -610,6 +610,505 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="ii.-оптичний-інтернет-у-населених-пунктах-учасниках-програми" class="level4">
+<h4 class="anchored" data-anchor-id="ii.-оптичний-інтернет-у-населених-пунктах-учасниках-програми">II. Оптичний інтернет у населених пунктах-учасниках програми</h4>
+<p>В розрізі населених пунктів-учасників програми, підключених до оптичного інтернету і які знаходяться на підконтрольній території, маємо таку динаміку за роками (тут також населений пункт вважається підключеним, якщо принаймні в один період звітування 2021-2024Q2 постачальники зазначали присутність абонентів, підключених за технологіями <em>FTTx</em>/<em>xPON</em>):</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="wirqaykemz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wirqaykemz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wirqaykemz thead, #wirqaykemz tbody, #wirqaykemz tfoot, #wirqaykemz tr, #wirqaykemz td, #wirqaykemz th {
+  border-style: none;
+}
+
+#wirqaykemz p {
+  margin: 0;
+  padding: 0;
+}
+
+#wirqaykemz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wirqaykemz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wirqaykemz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wirqaykemz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wirqaykemz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wirqaykemz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wirqaykemz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wirqaykemz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wirqaykemz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wirqaykemz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wirqaykemz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wirqaykemz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wirqaykemz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wirqaykemz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wirqaykemz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirqaykemz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wirqaykemz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wirqaykemz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wirqaykemz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirqaykemz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wirqaykemz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirqaykemz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wirqaykemz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirqaykemz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wirqaykemz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirqaykemz .gt_left {
+  text-align: left;
+}
+
+#wirqaykemz .gt_center {
+  text-align: center;
+}
+
+#wirqaykemz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wirqaykemz .gt_font_normal {
+  font-weight: normal;
+}
+
+#wirqaykemz .gt_font_bold {
+  font-weight: bold;
+}
+
+#wirqaykemz .gt_font_italic {
+  font-style: italic;
+}
+
+#wirqaykemz .gt_super {
+  font-size: 65%;
+}
+
+#wirqaykemz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wirqaykemz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wirqaykemz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wirqaykemz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wirqaykemz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wirqaykemz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wirqaykemz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wirqaykemz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wirqaykemz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="subs_xpon_fttx_np_2021" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">оптич_інтернет 2021</th>
+<th id="subs_xpon_fttx_np_2022" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">оптич_інтернет 2022</th>
+<th id="subs_xpon_fttx_np_2023" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">оптич_інтернет 2023</th>
+<th id="subs_xpon_fttx_np_2024Q2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">оптич_інтернет 2024Q2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="subs_xpon_fttx_np_2021">907</td>
+<td class="gt_row gt_right" headers="subs_xpon_fttx_np_2022">1677</td>
+<td class="gt_row gt_right" headers="subs_xpon_fttx_np_2023">2128</td>
+<td class="gt_row gt_right" headers="subs_xpon_fttx_np_2024Q2">2233</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Ще 337 населених пункти перебувають на окупованих територіях.&nbsp;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> ua_borders<span class="sc">$</span>geometry, <span class="at">fill =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> occupied_sf<span class="sc">$</span>geometry, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Населені пункти-учасники програми, наразі на окупованих територіях"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Станом на 03 листопада 2024"</span>) <span class="sc">+</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Таким чином, з 3237 населених пунктів, ідентифікованих як учасників програми, станом на 2024Q2 регуляторна звітність показує наявність оптичного інтернету у 2233 населених пунктах. Ще 337 перебувають на тимчасово окупавних територіях.</p>
+<p>Щодо решти 667 населених пунктів, які брали участь в програмі, але, відповідно до звітності, не мають підключення до фіксованого Інтернет, проведений додатковий аналіз: підключення цих населених пунктів додатково оцінено завдяки співставленню переможців тендерів на постачання послуг з підключення до оптичного Інтернет зі списком постачальників електронних послуг, що не подають регуляторну звітність: базовим припущенням є те, що у населеному пункті, де є постачальник-переможець тендеру, але при цьому цей постачальник не подає звітність через воєнний стан — у такому населеному пунктів фіксований Інтернет скоріше підключений.</p>
+<p>скільки тг мають хоча б один</p>
+<p>станом на 2024q2 у 9574 підконтрольних нп (з 25,847 всього підконтрольних) немає фіксованого інтернету, тобто ні xpon, ні fttx (не було жодної згадки про присутність цих технологій в 1т за період 2021-2024q2). - У 1052 громадах є принаймні 1 нп без фіксованого інтернету. - за даними по соц.закладам на початок 2022 року, з цих 9574 нп без фіксованого інтернету, у 6610 нп немає жодного соц.закладу. І навпаки, у 2964 нп без фіксованого інтернету є принаймні 1 соц.заклад - всього у 2964 нп без фікс.інтернету і з соц.закладами — 7527&nbsp;соц.закладів</p>
 </section>
 </section>
 
