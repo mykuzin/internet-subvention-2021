@@ -108,7 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>перелік соціальних закладів (набір МЦТУ, актуальний на січень 2022 року);</li>
 <li>кількість абонентів у підключених населених пунктах у розрізі технологій (форма 1-Т за період 2021-2024Q2);</li>
+<li>звітність від ОМС щодо підключених соціальних закладів в межах інтернет-субвенції, станом на 16 лютого 2023;</li>
 <li>перелік окупованих населених пунктів (дані IWS, станом на 03 листопада 2024).</li>
+<li>публічні геопросторові файли з межами адміністративних кордонів населених пунктів, районів тощо.</li>
 </ul>
 </section>
 <section id="аналіз" class="level2">
@@ -120,23 +122,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>t1_24q2_accum <span class="sc">|&gt;</span> <span class="fu">count</span>(fixed_internet_type) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> <span class="fu">grand_summary_rows</span>(<span class="dv">2</span>, <span class="at">fns =</span> <span class="sc">~</span> <span class="fu">sum</span>(.))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="bpfqficblk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bpfqficblk table {
+<div id="bfukdnedlb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bfukdnedlb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bpfqficblk thead, #bpfqficblk tbody, #bpfqficblk tfoot, #bpfqficblk tr, #bpfqficblk td, #bpfqficblk th {
+#bfukdnedlb thead, #bfukdnedlb tbody, #bfukdnedlb tfoot, #bfukdnedlb tr, #bfukdnedlb td, #bfukdnedlb th {
   border-style: none;
 }
 
-#bpfqficblk p {
+#bfukdnedlb p {
   margin: 0;
   padding: 0;
 }
 
-#bpfqficblk .gt_table {
+#bfukdnedlb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -162,12 +164,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_caption {
+#bfukdnedlb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bpfqficblk .gt_title {
+#bfukdnedlb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -179,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#bpfqficblk .gt_subtitle {
+#bfukdnedlb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -191,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#bpfqficblk .gt_heading {
+#bfukdnedlb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -203,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_bottom_border {
+#bfukdnedlb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_col_headings {
+#bfukdnedlb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -224,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_col_heading {
+#bfukdnedlb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -244,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#bpfqficblk .gt_column_spanner_outer {
+#bfukdnedlb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -256,15 +258,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#bpfqficblk .gt_column_spanner_outer:first-child {
+#bfukdnedlb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bpfqficblk .gt_column_spanner_outer:last-child {
+#bfukdnedlb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bpfqficblk .gt_column_spanner {
+#bfukdnedlb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -276,11 +278,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#bpfqficblk .gt_spanner_row {
+#bfukdnedlb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bpfqficblk .gt_group_heading {
+#bfukdnedlb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -306,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#bpfqficblk .gt_empty_group_heading {
+#bfukdnedlb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -321,15 +323,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#bpfqficblk .gt_from_md > :first-child {
+#bfukdnedlb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bpfqficblk .gt_from_md > :last-child {
+#bfukdnedlb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bpfqficblk .gt_row {
+#bfukdnedlb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#bpfqficblk .gt_stub {
+#bfukdnedlb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -361,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#bpfqficblk .gt_stub_row_group {
+#bfukdnedlb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,15 +377,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#bpfqficblk .gt_row_group_first td {
+#bfukdnedlb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bpfqficblk .gt_row_group_first th {
+#bfukdnedlb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bpfqficblk .gt_summary_row {
+#bfukdnedlb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -393,16 +395,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#bpfqficblk .gt_first_summary_row {
+#bfukdnedlb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_first_summary_row.thick {
+#bfukdnedlb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bpfqficblk .gt_last_summary_row {
+#bfukdnedlb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -412,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_grand_summary_row {
+#bfukdnedlb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -422,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#bpfqficblk .gt_first_grand_summary_row {
+#bfukdnedlb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -432,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_last_grand_summary_row_top {
+#bfukdnedlb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -442,11 +444,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_striped {
+#bfukdnedlb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bpfqficblk .gt_table_body {
+#bfukdnedlb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -455,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_footnotes {
+#bfukdnedlb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -469,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_footnote {
+#bfukdnedlb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -478,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#bpfqficblk .gt_sourcenotes {
+#bfukdnedlb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -492,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#bpfqficblk .gt_sourcenote {
+#bfukdnedlb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -500,72 +502,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#bpfqficblk .gt_left {
+#bfukdnedlb .gt_left {
   text-align: left;
 }
 
-#bpfqficblk .gt_center {
+#bfukdnedlb .gt_center {
   text-align: center;
 }
 
-#bpfqficblk .gt_right {
+#bfukdnedlb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bpfqficblk .gt_font_normal {
+#bfukdnedlb .gt_font_normal {
   font-weight: normal;
 }
 
-#bpfqficblk .gt_font_bold {
+#bfukdnedlb .gt_font_bold {
   font-weight: bold;
 }
 
-#bpfqficblk .gt_font_italic {
+#bfukdnedlb .gt_font_italic {
   font-style: italic;
 }
 
-#bpfqficblk .gt_super {
+#bfukdnedlb .gt_super {
   font-size: 65%;
 }
 
-#bpfqficblk .gt_footnote_marks {
+#bfukdnedlb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bpfqficblk .gt_asterisk {
+#bfukdnedlb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bpfqficblk .gt_indent_1 {
+#bfukdnedlb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bpfqficblk .gt_indent_2 {
+#bfukdnedlb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bpfqficblk .gt_indent_3 {
+#bfukdnedlb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bpfqficblk .gt_indent_4 {
+#bfukdnedlb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bpfqficblk .gt_indent_5 {
+#bfukdnedlb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bpfqficblk .katex-display {
+#bfukdnedlb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bpfqficblk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bfukdnedlb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -616,23 +618,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>В розрізі населених пунктів-учасників програми, підключених до оптичного інтернету і які знаходяться на підконтрольній території, маємо таку динаміку за роками (тут також населений пункт вважається підключеним, якщо принаймні в один період звітування 2021-2024Q2 постачальники зазначали присутність абонентів, підключених за технологіями <em>FTTx</em>/<em>xPON</em>):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rvmkervvfp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rvmkervvfp table {
+<div id="puvawmmuor" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#puvawmmuor table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rvmkervvfp thead, #rvmkervvfp tbody, #rvmkervvfp tfoot, #rvmkervvfp tr, #rvmkervvfp td, #rvmkervvfp th {
+#puvawmmuor thead, #puvawmmuor tbody, #puvawmmuor tfoot, #puvawmmuor tr, #puvawmmuor td, #puvawmmuor th {
   border-style: none;
 }
 
-#rvmkervvfp p {
+#puvawmmuor p {
   margin: 0;
   padding: 0;
 }
 
-#rvmkervvfp .gt_table {
+#puvawmmuor .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -658,12 +660,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_caption {
+#puvawmmuor .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rvmkervvfp .gt_title {
+#puvawmmuor .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -675,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#rvmkervvfp .gt_subtitle {
+#puvawmmuor .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -687,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#rvmkervvfp .gt_heading {
+#puvawmmuor .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -699,13 +701,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_bottom_border {
+#puvawmmuor .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_col_headings {
+#puvawmmuor .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -720,7 +722,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_col_heading {
+#puvawmmuor .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -740,7 +742,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rvmkervvfp .gt_column_spanner_outer {
+#puvawmmuor .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -752,15 +754,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#rvmkervvfp .gt_column_spanner_outer:first-child {
+#puvawmmuor .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rvmkervvfp .gt_column_spanner_outer:last-child {
+#puvawmmuor .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rvmkervvfp .gt_column_spanner {
+#puvawmmuor .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -772,11 +774,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#rvmkervvfp .gt_spanner_row {
+#puvawmmuor .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rvmkervvfp .gt_group_heading {
+#puvawmmuor .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -802,7 +804,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#rvmkervvfp .gt_empty_group_heading {
+#puvawmmuor .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -817,15 +819,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#rvmkervvfp .gt_from_md > :first-child {
+#puvawmmuor .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rvmkervvfp .gt_from_md > :last-child {
+#puvawmmuor .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rvmkervvfp .gt_row {
+#puvawmmuor .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -844,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rvmkervvfp .gt_stub {
+#puvawmmuor .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -857,7 +859,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rvmkervvfp .gt_stub_row_group {
+#puvawmmuor .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -871,15 +873,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#rvmkervvfp .gt_row_group_first td {
+#puvawmmuor .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rvmkervvfp .gt_row_group_first th {
+#puvawmmuor .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rvmkervvfp .gt_summary_row {
+#puvawmmuor .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -889,16 +891,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rvmkervvfp .gt_first_summary_row {
+#puvawmmuor .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_first_summary_row.thick {
+#puvawmmuor .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rvmkervvfp .gt_last_summary_row {
+#puvawmmuor .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -908,7 +910,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_grand_summary_row {
+#puvawmmuor .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -918,7 +920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rvmkervvfp .gt_first_grand_summary_row {
+#puvawmmuor .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -928,7 +930,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_last_grand_summary_row_top {
+#puvawmmuor .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -938,11 +940,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_striped {
+#puvawmmuor .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rvmkervvfp .gt_table_body {
+#puvawmmuor .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -951,7 +953,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_footnotes {
+#puvawmmuor .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -965,7 +967,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_footnote {
+#puvawmmuor .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -974,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rvmkervvfp .gt_sourcenotes {
+#puvawmmuor .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -988,7 +990,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rvmkervvfp .gt_sourcenote {
+#puvawmmuor .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -996,72 +998,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rvmkervvfp .gt_left {
+#puvawmmuor .gt_left {
   text-align: left;
 }
 
-#rvmkervvfp .gt_center {
+#puvawmmuor .gt_center {
   text-align: center;
 }
 
-#rvmkervvfp .gt_right {
+#puvawmmuor .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rvmkervvfp .gt_font_normal {
+#puvawmmuor .gt_font_normal {
   font-weight: normal;
 }
 
-#rvmkervvfp .gt_font_bold {
+#puvawmmuor .gt_font_bold {
   font-weight: bold;
 }
 
-#rvmkervvfp .gt_font_italic {
+#puvawmmuor .gt_font_italic {
   font-style: italic;
 }
 
-#rvmkervvfp .gt_super {
+#puvawmmuor .gt_super {
   font-size: 65%;
 }
 
-#rvmkervvfp .gt_footnote_marks {
+#puvawmmuor .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rvmkervvfp .gt_asterisk {
+#puvawmmuor .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rvmkervvfp .gt_indent_1 {
+#puvawmmuor .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rvmkervvfp .gt_indent_2 {
+#puvawmmuor .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rvmkervvfp .gt_indent_3 {
+#puvawmmuor .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rvmkervvfp .gt_indent_4 {
+#puvawmmuor .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rvmkervvfp .gt_indent_5 {
+#puvawmmuor .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rvmkervvfp .katex-display {
+#puvawmmuor .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rvmkervvfp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#puvawmmuor div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1106,17 +1108,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Отже, з 3237 населених пунктів, ідентифікованих як учасників програми, станом на 2024Q2 регуляторна звітність показує наявність оптичного інтернету у 2233 населених пунктах — тоді як звітність ОМС, станом на лютий 2023, дає 2538 населені пункти. Ще 337 перебувають на тимчасово окупавних територіях.</p>
-<p>Щодо решти 667 (362, якщо опиратися на звітність ОМС) населених пунктів на підконтрольній територій, які брали участь в програмі, але, відповідно до звітності, не мають підключення до фіксованого Інтернет, проведено додатковий аналіз: підключення цих населених пунктів оцінено завдяки співставленню переможців тендерів на постачання послуг з підключення до оптичного Інтернет зі списком постачальників електронних послуг, що не подають регуляторну звітність: базовим припущенням є те, що у населеному пункті, де є постачальник-переможець тендеру, але при цьому цей постачальник не подає звітність через воєнний стан — у такому населеному пункті фіксований Інтернет скоріше підключений</p>
+<p>Отже, з 3237 населених пунктів, ідентифікованих як учасників програми, станом на 2024Q2 регуляторна звітність показує наявність оптичного інтернету у 2233 населених пунктах — тоді як звітність ОМС, станом на лютий 2023, дає 2538 населені пункти. Ще 337 перебувають на тимчасово окупованих територіях.</p>
+<p>Щодо решти 667 населених пунктів на підконтрольній території, які брали участь в програмі, але, відповідно до регуляторної звітності, не мають підключення до фіксованого Інтернет, проведено додатковий аналіз: підключення цих населених пунктів оцінено завдяки співставленню переможців тендерів на постачання послуг з підключення до оптичного Інтернет (зі звітності ОМС) зі списком постачальників електронних послуг, що не подають регуляторну звітність: базовим припущенням є те, що у населеному пункті, де є постачальник-переможець тендеру, але при цьому цей постачальник не подає звітність через воєнний стан — у такому населеному пункті фіксований Інтернет скоріше підключений.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>soczakl_subv <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edrpou_provider =</span> <span class="fu">as.character</span>(edrpou_provider)) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(t1,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">join_by</span>(edrpou_provider <span class="sc">==</span> edrpou)) <span class="sc">|&gt;</span> <span class="fu">View</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>edrpou_to_check <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>soczakl_subv <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edrpou_provider =</span> <span class="fu">as.character</span>(edrpou_provider)) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(t1,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">join_by</span>(edrpou_provider <span class="sc">==</span> edrpou)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(firm_name)) <span class="sc">|&gt;</span> <span class="fu">distinct</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>t1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># немає 22 провайдерів у 1-Т, які вказані як переможці у звітності ОМС</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># на цих 22 провайдери припадає 240 нп у звітності ОМС</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>np240_vector <span class="ot">&lt;-</span> soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>() <span class="co">#це технічний рядок (вектор з 240 нп)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>subv_results_aux <span class="sc">|&gt;</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subs_fttx_xpon_2024Q2 <span class="sc">!=</span><span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="co"># це 2233 нп, які по 1-Т мають фікс.інтернет на 2024Q2</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(geo_katottg4 <span class="sc">%in%</span> np240_vector) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># 80 населених пунктів з 240 є в 1-Т з оптичним інтернетом (від інших провайдерів)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>скільки тг мають хоча б один</p>
-<p>станом на 2024q2 у 9574 підконтрольних нп (з 25,847 всього підконтрольних) немає фіксованого інтернету, тобто ні xpon, ні fttx (не було жодної згадки про присутність цих технологій в 1т за період 2021-2024q2). - У 1052 громадах є принаймні 1 нп без фіксованого інтернету. - за даними по соц.закладам на початок 2022 року, з цих 9574 нп без фіксованого інтернету, у 6610 нп немає жодного соц.закладу. І навпаки, у 2964 нп без фіксованого інтернету є принаймні 1 соц.заклад - всього у 2964 нп без фікс.інтернету і з соц.закладами — 7527&nbsp;соц.закладів</p>
+<p>Цей додатковий аналіз показав, що 22 провайдери, вказані як переможці тендерів у звітності від ОМС, не подавали регуляторну звітність у період 2021-2024Q2. На них припадає 240 підключених населених пунктів, відповідно до звітності від ОМС. В той же час, у 80 з цих 240 населених пунктів є оптичний інтернет, підключений іншими провайдерами (згідно з формою 1-Т). Таким чином, керуючись озвученим вище припущенням, до 2233 населених пунктів з 1-Т можемо додати 160 населених пункти, ідентифіковані через звітність ОМС. Всього виходить 2393 населені пункти з оптичним інтернетом і 337 — на окупованих територіях.</p>
+<p>станом на 2024q2 у 9574 підконтрольних нп (з 25,847 всього підконтрольних) немає фіксованого інтернету, тобто ні xpon, ні fttx (не було жодної згадки про присутність цих технологій в 1т за період 2021-2024q2). - У 1052 громадах є принаймні 1 нп без фіксованого інтернету.</p>
+<p>- за даними по соц.закладам на початок 2022 року, з цих 9574 нп без фіксованого інтернету, у 6610 нп немає жодного соц.закладу. І навпаки, у 2964 нп без фіксованого інтернету є принаймні 1 соц.заклад</p>
+<p>- всього у 2964 нп без фікс.інтернету і з соц.закладами — 7527&nbsp;соц.закладів</p>
 </section>
 </section>
 
