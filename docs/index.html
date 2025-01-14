@@ -99,18 +99,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="про-інтернет-субвенцію" class="level2">
 <h2 class="anchored" data-anchor-id="про-інтернет-субвенцію">Про інтернет-субвенцію</h2>
 <p>У червні 2021 року Уряд затвердив виділення 483.8 млн грн на <a href="https://bb.gov.ua/#rec298897521">субвенцію</a> для підключення закладів соціальної інфраструктури (шкіл, бібліотек, медичних закладів, ЦНАПів тощо) до широкосмугового Інтернет. Програма передбачала, що 670 громад та 3652 населених пунктів (здебільшого, сіл та селищ) зможуть отримати послуги з підключення до оптичного Інтернет.</p>
-<p>Заявки на участь у програмі <a href="https://lookerstudio.google.com/u/0/reporting/960c1212-6681-49c2-b31b-b3dc92b32541/page/lVANC">подали</a> 4103 населені пункти, з яких підтвердження на участь («повне погодження») отримали 2902. Фактично, закупівля послуги відбулася для 2805 населених пунктів. Непрямим впливом програми передбачалося також, що ще кілька сотень населених пунктів, розташованих на шляху до відібраних населених пунктів, також будуть підключені залученими постачальниками інтернет-послуг (переможцями тендерів).</p>
+<p>Заявки на участь у програмі <a href="https://lookerstudio.google.com/u/0/reporting/960c1212-6681-49c2-b31b-b3dc92b32541/page/lVANC">подали</a> 4103 населені пункти, з яких підтвердження на участь («повне погодження») отримали 2902. Фактично підключення послуги («відповідно до протоколу») відбулося для 2805 населених пунктів. Непрямим впливом програми передбачалося також, що ще кілька сотень населених пунктів, розташованих на шляху до відібраних населених пунктів, також будуть підключені залученими постачальниками інтернет-послуг (переможцями тендерів).</p>
 </section>
 <section id="підхід-до-оцінки" class="level2">
 <h2 class="anchored" data-anchor-id="підхід-до-оцінки">Підхід до оцінки</h2>
-<p>Для оцінки ефективності цієї програми була проаналізована регуляторна звітність постачальників електронних послуг за формою 1-Т «Сфера телекомунікацій»: чи з’явився оптичний інтернет, тобто технології <em>xPON</em> або <em>FTTx</em>, у населених пунктах, заявлених як учасників програми.&nbsp;До останніх віднесено 2805 населених пунктів, «підключених відповідно до протоколу», 334 «підключених транзитом» та 98 «підключених до закупівлі» — <strong>разом 3237 населених пунктів</strong>.</p>
+<p>Для оцінки ефективності цієї програми була проаналізована регуляторна звітність постачальників електронних послуг за формою 1-Т «Сфера телекомунікацій»: чи з’явився оптичний інтернет, тобто технології <em>xPON</em> або <em>FTTx</em>, у населених пунктах, ідентифікованих як учасників програми.&nbsp;До останніх віднесено 2805 населених пунктів, «підключених відповідно до протоколу», 334 «підключених транзитом» та 98 «підключених до закупівлі» — <strong>разом 3237 населених пунктів</strong>.</p>
 <p>Для оцінки впливу програми також були використані такі набори даних:</p>
 <ul>
 <li>перелік соціальних закладів (набір МЦТУ, актуальний на січень 2022 року);</li>
 <li>кількість абонентів у підключених населених пунктах у розрізі технологій (форма 1-Т за період 2021-2024Q2);</li>
 <li>звітність від ОМС щодо підключених соціальних закладів в межах інтернет-субвенції, станом на 16 лютого 2023;</li>
 <li>перелік окупованих населених пунктів (дані IWS, станом на 03 листопада 2024).</li>
-<li>публічні геопросторові файли з межами адміністративних кордонів населених пунктів, районів тощо.</li>
+<li>публічні геопросторові <a href="https://data.humdata.org/dataset/cod-ab-ukr">файли</a> з межами адміністративних кордонів населених пунктів, районів тощо.</li>
 </ul>
 </section>
 <section id="аналіз" class="level2">
@@ -122,23 +122,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>t1_24q2_accum <span class="sc">|&gt;</span> <span class="fu">count</span>(fixed_internet_type) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> <span class="fu">grand_summary_rows</span>(<span class="dv">2</span>, <span class="at">fns =</span> <span class="sc">~</span> <span class="fu">sum</span>(.))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="dccclkygdm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dccclkygdm table {
+<div id="cuesxgripn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cuesxgripn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dccclkygdm thead, #dccclkygdm tbody, #dccclkygdm tfoot, #dccclkygdm tr, #dccclkygdm td, #dccclkygdm th {
+#cuesxgripn thead, #cuesxgripn tbody, #cuesxgripn tfoot, #cuesxgripn tr, #cuesxgripn td, #cuesxgripn th {
   border-style: none;
 }
 
-#dccclkygdm p {
+#cuesxgripn p {
   margin: 0;
   padding: 0;
 }
 
-#dccclkygdm .gt_table {
+#cuesxgripn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -164,12 +164,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_caption {
+#cuesxgripn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dccclkygdm .gt_title {
+#cuesxgripn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#dccclkygdm .gt_subtitle {
+#cuesxgripn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#dccclkygdm .gt_heading {
+#cuesxgripn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -205,13 +205,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_bottom_border {
+#cuesxgripn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_col_headings {
+#cuesxgripn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_col_heading {
+#cuesxgripn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dccclkygdm .gt_column_spanner_outer {
+#cuesxgripn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -258,15 +258,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#dccclkygdm .gt_column_spanner_outer:first-child {
+#cuesxgripn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dccclkygdm .gt_column_spanner_outer:last-child {
+#cuesxgripn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dccclkygdm .gt_column_spanner {
+#cuesxgripn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -278,11 +278,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#dccclkygdm .gt_spanner_row {
+#cuesxgripn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dccclkygdm .gt_group_heading {
+#cuesxgripn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#dccclkygdm .gt_empty_group_heading {
+#cuesxgripn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -323,15 +323,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#dccclkygdm .gt_from_md > :first-child {
+#cuesxgripn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dccclkygdm .gt_from_md > :last-child {
+#cuesxgripn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dccclkygdm .gt_row {
+#cuesxgripn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#dccclkygdm .gt_stub {
+#cuesxgripn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dccclkygdm .gt_stub_row_group {
+#cuesxgripn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -377,15 +377,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#dccclkygdm .gt_row_group_first td {
+#cuesxgripn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dccclkygdm .gt_row_group_first th {
+#cuesxgripn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dccclkygdm .gt_summary_row {
+#cuesxgripn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -395,16 +395,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dccclkygdm .gt_first_summary_row {
+#cuesxgripn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_first_summary_row.thick {
+#cuesxgripn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dccclkygdm .gt_last_summary_row {
+#cuesxgripn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -414,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_grand_summary_row {
+#cuesxgripn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -424,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dccclkygdm .gt_first_grand_summary_row {
+#cuesxgripn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -434,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_last_grand_summary_row_top {
+#cuesxgripn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -444,11 +444,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_striped {
+#cuesxgripn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dccclkygdm .gt_table_body {
+#cuesxgripn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -457,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_footnotes {
+#cuesxgripn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_footnote {
+#cuesxgripn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -480,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dccclkygdm .gt_sourcenotes {
+#cuesxgripn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#dccclkygdm .gt_sourcenote {
+#cuesxgripn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -502,72 +502,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#dccclkygdm .gt_left {
+#cuesxgripn .gt_left {
   text-align: left;
 }
 
-#dccclkygdm .gt_center {
+#cuesxgripn .gt_center {
   text-align: center;
 }
 
-#dccclkygdm .gt_right {
+#cuesxgripn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dccclkygdm .gt_font_normal {
+#cuesxgripn .gt_font_normal {
   font-weight: normal;
 }
 
-#dccclkygdm .gt_font_bold {
+#cuesxgripn .gt_font_bold {
   font-weight: bold;
 }
 
-#dccclkygdm .gt_font_italic {
+#cuesxgripn .gt_font_italic {
   font-style: italic;
 }
 
-#dccclkygdm .gt_super {
+#cuesxgripn .gt_super {
   font-size: 65%;
 }
 
-#dccclkygdm .gt_footnote_marks {
+#cuesxgripn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dccclkygdm .gt_asterisk {
+#cuesxgripn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dccclkygdm .gt_indent_1 {
+#cuesxgripn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dccclkygdm .gt_indent_2 {
+#cuesxgripn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dccclkygdm .gt_indent_3 {
+#cuesxgripn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dccclkygdm .gt_indent_4 {
+#cuesxgripn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dccclkygdm .gt_indent_5 {
+#cuesxgripn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dccclkygdm .katex-display {
+#cuesxgripn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dccclkygdm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cuesxgripn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -618,23 +618,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>В розрізі населених пунктів-учасників програми, підключених до оптичного інтернету і які знаходяться на підконтрольній території, маємо таку динаміку за роками (тут також населений пункт вважається підключеним, якщо принаймні в один період звітування 2021-2024Q2 постачальники зазначали присутність абонентів, підключених за технологіями <em>FTTx</em>/<em>xPON</em>):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hyuusvziqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hyuusvziqq table {
+<div id="apmwwmrexk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#apmwwmrexk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hyuusvziqq thead, #hyuusvziqq tbody, #hyuusvziqq tfoot, #hyuusvziqq tr, #hyuusvziqq td, #hyuusvziqq th {
+#apmwwmrexk thead, #apmwwmrexk tbody, #apmwwmrexk tfoot, #apmwwmrexk tr, #apmwwmrexk td, #apmwwmrexk th {
   border-style: none;
 }
 
-#hyuusvziqq p {
+#apmwwmrexk p {
   margin: 0;
   padding: 0;
 }
 
-#hyuusvziqq .gt_table {
+#apmwwmrexk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -660,12 +660,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_caption {
+#apmwwmrexk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hyuusvziqq .gt_title {
+#apmwwmrexk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -677,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#hyuusvziqq .gt_subtitle {
+#apmwwmrexk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -689,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#hyuusvziqq .gt_heading {
+#apmwwmrexk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -701,13 +701,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_bottom_border {
+#apmwwmrexk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_col_headings {
+#apmwwmrexk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -722,7 +722,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_col_heading {
+#apmwwmrexk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -742,7 +742,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hyuusvziqq .gt_column_spanner_outer {
+#apmwwmrexk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -754,15 +754,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#hyuusvziqq .gt_column_spanner_outer:first-child {
+#apmwwmrexk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hyuusvziqq .gt_column_spanner_outer:last-child {
+#apmwwmrexk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hyuusvziqq .gt_column_spanner {
+#apmwwmrexk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -774,11 +774,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#hyuusvziqq .gt_spanner_row {
+#apmwwmrexk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hyuusvziqq .gt_group_heading {
+#apmwwmrexk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,7 +804,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#hyuusvziqq .gt_empty_group_heading {
+#apmwwmrexk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -819,15 +819,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#hyuusvziqq .gt_from_md > :first-child {
+#apmwwmrexk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hyuusvziqq .gt_from_md > :last-child {
+#apmwwmrexk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hyuusvziqq .gt_row {
+#apmwwmrexk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hyuusvziqq .gt_stub {
+#apmwwmrexk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,7 +859,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hyuusvziqq .gt_stub_row_group {
+#apmwwmrexk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -873,15 +873,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#hyuusvziqq .gt_row_group_first td {
+#apmwwmrexk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hyuusvziqq .gt_row_group_first th {
+#apmwwmrexk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hyuusvziqq .gt_summary_row {
+#apmwwmrexk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -891,16 +891,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hyuusvziqq .gt_first_summary_row {
+#apmwwmrexk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_first_summary_row.thick {
+#apmwwmrexk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hyuusvziqq .gt_last_summary_row {
+#apmwwmrexk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -910,7 +910,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_grand_summary_row {
+#apmwwmrexk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -920,7 +920,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hyuusvziqq .gt_first_grand_summary_row {
+#apmwwmrexk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -930,7 +930,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_last_grand_summary_row_top {
+#apmwwmrexk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -940,11 +940,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_striped {
+#apmwwmrexk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hyuusvziqq .gt_table_body {
+#apmwwmrexk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -953,7 +953,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_footnotes {
+#apmwwmrexk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -967,7 +967,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_footnote {
+#apmwwmrexk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -976,7 +976,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hyuusvziqq .gt_sourcenotes {
+#apmwwmrexk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -990,7 +990,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hyuusvziqq .gt_sourcenote {
+#apmwwmrexk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -998,72 +998,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hyuusvziqq .gt_left {
+#apmwwmrexk .gt_left {
   text-align: left;
 }
 
-#hyuusvziqq .gt_center {
+#apmwwmrexk .gt_center {
   text-align: center;
 }
 
-#hyuusvziqq .gt_right {
+#apmwwmrexk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hyuusvziqq .gt_font_normal {
+#apmwwmrexk .gt_font_normal {
   font-weight: normal;
 }
 
-#hyuusvziqq .gt_font_bold {
+#apmwwmrexk .gt_font_bold {
   font-weight: bold;
 }
 
-#hyuusvziqq .gt_font_italic {
+#apmwwmrexk .gt_font_italic {
   font-style: italic;
 }
 
-#hyuusvziqq .gt_super {
+#apmwwmrexk .gt_super {
   font-size: 65%;
 }
 
-#hyuusvziqq .gt_footnote_marks {
+#apmwwmrexk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hyuusvziqq .gt_asterisk {
+#apmwwmrexk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hyuusvziqq .gt_indent_1 {
+#apmwwmrexk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hyuusvziqq .gt_indent_2 {
+#apmwwmrexk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hyuusvziqq .gt_indent_3 {
+#apmwwmrexk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hyuusvziqq .gt_indent_4 {
+#apmwwmrexk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hyuusvziqq .gt_indent_5 {
+#apmwwmrexk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hyuusvziqq .katex-display {
+#apmwwmrexk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hyuusvziqq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#apmwwmrexk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1117,22 +1117,539 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(t1,</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">join_by</span>(edrpou_provider <span class="sc">==</span> edrpou)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(firm_name)) <span class="sc">|&gt;</span> <span class="fu">distinct</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>t1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># немає 22 провайдерів у 1-Т, які вказані як переможці у звітності ОМС</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># на цих 22 провайдери припадає 240 нп у звітності ОМС</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>np240_vector <span class="ot">&lt;-</span> soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>() <span class="co">#це технічний рядок (вектор з 240 нп)</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>subv_results_aux <span class="sc">|&gt;</span> </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subs_fttx_xpon_2024Q2 <span class="sc">!=</span><span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="co"># це 2233 нп, які по 1-Т мають фікс.інтернет на 2024Q2</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(geo_katottg4 <span class="sc">%in%</span> np240_vector) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># 80 населених пунктів з 240 є в 1-Т з оптичним інтернетом (від інших провайдерів)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(firm_name)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(edrpou_provider) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>t1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># немає 22 провайдерів у 1-Т, які вказані як переможці у звітності ОМС</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># на цих 22 провайдери припадає 240 нп у звітності ОМС</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>np240_vector <span class="ot">&lt;-</span> soczakl_subv <span class="sc">|&gt;</span> <span class="fu">filter</span>(edrpou_provider <span class="sc">%in%</span> edrpou_to_check) <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(geo_katottg4) <span class="sc">|&gt;</span> <span class="fu">as_vector</span>() <span class="sc">|&gt;</span> <span class="fu">unname</span>() <span class="co">#це технічний рядок (вектор з 240 нп)</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>subv_results_aux <span class="sc">|&gt;</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subs_fttx_xpon_2024Q2 <span class="sc">!=</span><span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="co"># це 2233 нп, які по 1-Т мають фікс.інтернет на 2024Q2</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(geo_katottg4 <span class="sc">%in%</span> np240_vector) <span class="sc">|&gt;</span> <span class="fu">nrow</span>() <span class="co"># 80 населених пунктів з 240 є в 1-Т з оптичним інтернетом (від інших провайдерів)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Цей додатковий аналіз показав, що 22 провайдери, вказані як переможці тендерів у звітності від ОМС, не подавали регуляторну звітність у період 2021-2024Q2. На них припадає 240 підключених населених пунктів, відповідно до звітності від ОМС. В той же час, у 80 з цих 240 населених пунктів є оптичний інтернет, підключений іншими провайдерами (згідно з формою 1-Т). Таким чином, керуючись озвученим вище припущенням, до 2233 населених пунктів з 1-Т можемо додати 160 населених пункти, ідентифіковані через звітність ОМС. Всього виходить <strong>2393 населені пункти з оптичним інтернетом</strong> і 337 — на окупованих територіях.</p>
+<p>Цей додатковий аналіз показав, що 22 провайдери, вказані як переможці тендерів у звітності від ОМС, не подавали регуляторну звітність у період 2021-2024Q2. На них припадає 240 підключених населених пунктів, відповідно до звітності від ОМС. В той же час, у 80 з цих 240 населених пунктів є оптичний інтернет, підключений іншими провайдерами (згідно з формою 1-Т). Таким чином, керуючись озвученим вище припущенням, до 2233 населених пунктів з 1-Т можемо додати 160 населених пунктів, ідентифікованих через звітність ОМС. Всього виходить <strong>2393 населені пункти з оптичним інтернетом</strong> і <strong>337 — на окупованих територіях</strong>. <strong>Разом — 2730</strong>.</p>
+</section>
+<section id="iii.-абоненти" class="level4">
+<h4 class="anchored" data-anchor-id="iii.-абоненти">III. Абоненти</h4>
+<p>Оцінка кількості абонентів у підключених завдяки субвенції населених пунктах також заснована на формі 1-Т. З огляду на неповноту даних у звітності, викоростано такий підхід: якщо у звітності за попередній період зазначено присутність абонентів за визначеними технологіями у конкретному населеному пунктів, а у наступних — ні, то кількість абонентів перенесена з попереднього періоду у поточний/ наступні. Такий підхід дає лише приблизну оцінку кількості абонентів.</p>
+<p>Оцінка кількості абонентів нижче подана для 2233 населених пунктів, інформація про які є у формі 1-Т; абоненти з додаткових 160 населених пунктів, виокремлених зі звітності ОМС, тут не враховані.</p>
+<p>Кількість соціальних закладах порахована на основі набору МЦТУ з переліком соціальних закладів, актуальний станом на початок 2022 року.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="bfyjhplkkg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bfyjhplkkg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bfyjhplkkg thead, #bfyjhplkkg tbody, #bfyjhplkkg tfoot, #bfyjhplkkg tr, #bfyjhplkkg td, #bfyjhplkkg th {
+  border-style: none;
+}
+
+#bfyjhplkkg p {
+  margin: 0;
+  padding: 0;
+}
+
+#bfyjhplkkg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bfyjhplkkg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bfyjhplkkg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bfyjhplkkg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bfyjhplkkg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bfyjhplkkg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bfyjhplkkg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bfyjhplkkg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bfyjhplkkg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bfyjhplkkg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bfyjhplkkg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bfyjhplkkg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bfyjhplkkg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bfyjhplkkg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bfyjhplkkg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyjhplkkg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bfyjhplkkg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bfyjhplkkg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bfyjhplkkg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyjhplkkg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bfyjhplkkg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyjhplkkg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bfyjhplkkg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyjhplkkg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bfyjhplkkg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bfyjhplkkg .gt_left {
+  text-align: left;
+}
+
+#bfyjhplkkg .gt_center {
+  text-align: center;
+}
+
+#bfyjhplkkg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bfyjhplkkg .gt_font_normal {
+  font-weight: normal;
+}
+
+#bfyjhplkkg .gt_font_bold {
+  font-weight: bold;
+}
+
+#bfyjhplkkg .gt_font_italic {
+  font-style: italic;
+}
+
+#bfyjhplkkg .gt_super {
+  font-size: 65%;
+}
+
+#bfyjhplkkg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bfyjhplkkg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bfyjhplkkg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bfyjhplkkg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bfyjhplkkg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bfyjhplkkg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bfyjhplkkg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bfyjhplkkg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bfyjhplkkg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th colspan="3" class="gt_heading gt_title gt_font_normal">Субвенція 2021: нові населені пункти з xPON/FTTx</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Очікувалось покриття населених пунктів, уся Україна: <strong>3237</strong><br>
+населених пунктів в окупації: <strong>337</strong><br>
+Соціальних закладів у НП з субвенцією: <strong>8740</strong><br>
+Фактично нових НП з xPon/FTTx за роками (лише підконтрольні):</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="period" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Рік (на кінець періоду)</th>
+<th id="subscribers" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Села/Селища</th>
+<th id="subscribers_fttxpon" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Абоненти</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="period">2021</td>
+<td class="gt_row gt_right" headers="subscribers">907</td>
+<td class="gt_row gt_right" headers="subscribers_fttxpon">138588</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="period">2022</td>
+<td class="gt_row gt_right" headers="subscribers">1,677</td>
+<td class="gt_row gt_right" headers="subscribers_fttxpon">141724</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="period">2023</td>
+<td class="gt_row gt_right" headers="subscribers">2,128</td>
+<td class="gt_row gt_right" headers="subscribers_fttxpon">167902</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="period">2024Q2</td>
+<td class="gt_row gt_right" headers="subscribers">2,233</td>
+<td class="gt_row gt_right" headers="subscribers_fttxpon">135543</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="3" class="gt_sourcenote"><i>
+- Ще 160 НП ідентифіковано як підключені через звітність ОМС - не входять у цю таблицю<br>
+- Немає даних про підключення 507 НП/ їхніх абонентів
+<i></i></i></td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<p>розріз фізичні-юридичні особи</p>
 </section>
 </section>
 
