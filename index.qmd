@@ -685,7 +685,7 @@ soc_zakl_no_fixed |> summarise(sum_soc = sum(n_soc_zakl_2022))
 
 Як показує таблиця з першого розділу, згідно з регуляторною звітністю, оптичний інтернет (тобто xPon або FTTx) є у 16,273 населених пунктах з 25,847, які станом на 03 листопада 2024 року знаходяться на підконтрольних Україні територіях.
 
-```{r include = FALSE}
+```{r echo = FALSE}
 t1_24q2_accum |> count(fixed_internet_type) |> arrange(desc(n)) |> 
   gt() |> grand_summary_rows(2, fns = ~ sum(.))
 ```
